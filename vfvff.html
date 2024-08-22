@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General text styling */
+        body, input, button, label {
+            font-family: Arial, sans-serif; /* Set a common font family */
+            font-size: 20px; /* Set a common font size */
+            color: black; /* Set a common text color */
+        }
+
+        /* Switch styling */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px; /* Reduced width */
+            height: 20px; /* Reduced height */
+            margin-left: 10px; /* Space between label and switch */
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px; /* Reduced radius */
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px; /* Reduced height */
+            width: 14px; /* Reduced width */
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: lightgreen;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(18px); /* Adjusted for new size */
+        }
+
+        /* Box for Connect Server */
+        .server-box {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 10px; 
+            border-radius: 10px; 
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            display: inline-block; /* Keeps it inline with the other content */
+            margin-top: 10px;
+        }
+
+        /* Deposit Options Section */
+        .deposit-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .deposit-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .deposit-list li {
+            background-color: lightblue;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .deposit-list li span {
+            font-weight: bold;
+        }
+
+        .deposit-list li a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+    </style>
+</head>
+<body style="background-image: url('C:/Users/dheer/Desktop/hack/images(8).jpg');
+           background-size: cover; 
+           background-position: center;
+           background-repeat: no-repeat;">
+
+    <!-- Game UID Input, Start Button, and Connect Server Switch in a Box -->
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div style="background-color: rgba(255, 255, 0, 0.8); 
+                    padding: 30px; 
+                    border-radius: 15px; 
+                    box-shadow: 0px 0px 15px rgba(0, 0, 1, 0.5);
+                    text-align: center;">
+            <form id="gameForm">
+                <input type="text" id="gameUID" name="gameUID" placeholder="Enter your Game UID" 
+                       style="padding: 10px; background: white; margin-top: 10px;">
+                <br><br>
+                <button type="button" onclick="startGame()" 
+                        style="padding: 10px 20px; cursor: pointer;">
+                    Start Hack
+                </button>
+                <br><br>
+                <!-- Connect Server Box -->
+                <div class="server-box">
+                    <label for="serverSwitch">Connect Server</label>
+                    <label class="switch">
+                        <input type="checkbox" id="serverSwitch" onchange="toggleServerConnection()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Deposit Options Section -->
+    <div class="deposit-section">
+        <h1>Deposit Options</h1>
+        <ul class="deposit-list">
+            <li><a href="300.html" target="_blank"><span>300rs</span> = 2k deposit in entered Game UID</a></li> 
+            <li><a href="600.html" target="_blank"><span>600rs</span> = 5k deposit in entered Game UID</a></li>
+            <li><a href="900.html" target="_blank"><span>900rs</span> = 9k deposit in entered Game UID</a></li>
+            <li><a href="1200.html" target="_blank"><span>1200rs</span> = 14k deposit in entered Game UID</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function startGame() {
+            var gameUID = document.getElementById('gameUID').value;
+            if (gameUID) {
+                // Redirect to the second page
+                window.location.href = 'fourth.page.html';
+            } else {
+                alert("Please enter a Game UID.");
+            }
+        }
+
+        function toggleServerConnection() {
+            var serverSwitch = document.getElementById('serverSwitch');
+            if (serverSwitch.checked) {
+                alert("Server connected.");
+                // Add your server connection logic here
+            } else {
+                alert("Server disconnected.");
+                // Add your server disconnection logic here
+            }
+        }
+    </script>
+</body>
+</html>
